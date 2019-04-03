@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Boolean 연습</title>
+</head>
+<body>
+    <input id='num1' type="text">
+    <input id='num2' type="text">
+    <button id="btn1" onclick='input()'>더하기</button>
+    <div id='res'></div>
+    <script>
+        var arrange = function(num) {
+            var arrN = num.split("");
+            var arrNr = [];
+            while(arrN.length != 0){
+                var a = Number(arrN.pop());
+                arrNr.push(a);
+            }
+            console.log("arrange" + arrNr);
+            return arrNr;
+        };
+
+        var sameLength = function(arr){
+            for(var i = 0;i < arr.length; i++){
+                if(arr[i] === undefined){
+                arr[i] = 0;
+                }
+            }
+            console.log("sameLength" + arr);
+            return arr;
+        };
+        var halfadder = function(btnA, btnB) {
+            var answer = [0];
+            var len = btnA.length;
+            for (var i = 0; i < len; i++){
+                var s = answer.pop();
+                var sum = btnA[i] + btnB[i] + s;
+                if (sum === 3){
+                    answer.push(1);
+                    answer.push(1);
+                } else if(sum === 2) {
+                    answer.push(0);
+                    answer.push(1);
+                } else if(sum === 1){
+                    answer.push(1);
+                    answer.push(0);
+                    if(i === len - 1){
+                            answer.pop();
+                        }
+                } else if(sum === 0){
+                    answer.push(0);
+                    answer.push(0);
+                    if(i === len - 1){
+                        answer.pop();
+                    }
+                }
+            }
+            
+            console.log("halfadder" + answer);
+            return answer;
+        };
+        var sameByte = function(arr1, arr2){
+            var len = Math.max(arr1.length, arr2.length);
+            arr1.length = len;
+            arr2.length = len;
+            var arrA = sameLength(arr1);
+            var arrB = sameLength(arr2);
+            var result = halfadder(arrA, arrB);
+            console.log("sameByte" + result);
+            return result;
+        };
+
+        var input = function(){
+            var num1 = document.getElementById('num1').value;
+            var num2 = document.getElementById('num2').value;
+            var arrN1 = arrange(num1);
+            var arrN2 = arrange(num2);
+            var result = sameByte(arrN1, arrN2);
+            var final = document.getElementById('res');
+            final.innerHTML = result;
+        }; 
+    </script>
+</body>
+</html>
