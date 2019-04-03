@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10진수를 2진수로</title>
+</head>
+<body>
+    <P>10진수를 2진수로 변환</P>
+    <input id='10n' type="number">
+    <button id='change' onclick='change()'>변환</button>
+    <div id='res'>결과 :</div>
+    <script>
+        var change = function(){
+            var num = document.getElementById('10n').value;
+            var answer = [];
+            while(num != 0){
+                var n = num%2;
+                answer.push(n);
+                num = Math.floor(num/2);
+            }
+            var result = document.getElementById('res');
+            result.innerHTML = "결과 : " + answer;
+        };
+    </script>
+</body>
+</html>
