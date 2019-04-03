@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2진수를 10진수로</title>
+</head>
+<body>
+    <P>2진수를 10진수로 변환</P>
+    <input id='2n' type="text">
+    <button id='change' onclick='change()'>변환</button>
+    <div id='res'>결과 :</div>
+    <script>
+        var arrange = function(num) {
+            var arrN = num.split("");
+            var arrNr = [];
+            while(arrN.length != 0){
+                var a = Number(arrN.pop());
+                arrNr.push(a);
+            }
+            return arrNr;
+        };
+
+        var pow = function(num){
+            var ans = 1;
+            for (var i = 0; i < num; i++){
+                ans *= 2;
+            }
+            return ans;
+        }
+
+        var change = function(){
+            var num = document.getElementById('2n').value;
+            var N = arrange(num);
+            var answer = 0;
+            for (var i = 0; i < N.length; i++){
+                if(N[i] === 1) {
+                    answer += pow(i);
+                }
+            }
+            var result = document.getElementById('res');
+            result.innerHTML = "결과 : " + answer;
+        };
+    </script>
+</body>
+</html>
