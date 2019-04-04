@@ -19,6 +19,14 @@
                 var a = Number(arrN.pop());
                 arrNr.push(a);
             }
+            for(var i = 0;i < arrNr.length; i++){
+                if(arrNr[i] === 1){
+                    arrNr[i] = true;
+                } else {
+                    arrNr[i] = false;
+                }
+            }
+            console.log(arrNr);
             return arrNr;
         };
 
@@ -35,7 +43,7 @@
             var N = arrange(num);
             var answer = 0;
             for (var i = 0; i < N.length; i++){
-                if(N[i] === 1) {
+                if(N[i] === true) {
                     answer += pow(i);
                 }
             }
