@@ -1,4 +1,4 @@
-const sum = require("util");
+const sum = require("./util");
 
 function runProgram(arr) {
     const result = sum.sum(arr);
