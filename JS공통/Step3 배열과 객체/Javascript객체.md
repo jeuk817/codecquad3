@@ -117,6 +117,53 @@ var a1 = ['a', 10, 'b', 20, 'c', 30];
 var a2 = a1.filter(function(item) { return typeof item == 'number'; });  
 console.log(a2); // logs ['10', '20', '30']  
 
+#### reduce()
+참조 : https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce  
+reduce() 메서드는 배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환한다.  
+const array1 = [1, 2, 3, 4];  
+const reducer = (accumulator, currentValue) => accumulator + currentValue;  
+  
+// 1 + 2 + 3 + 4   
+console.log(array1.reduce(reducer));  
+// expected output: 10  
+  
+// 5 + 1 + 2 + 3 + 4  
+console.log(array1.reduce(reducer, 5));  
+// expected output: 15  
+
+- 매개변수
+    * callback : 배열의 각 요소에 대해 실행할 함수. 다음 네 가지 인수를 받는다.
+        - accumulator : accumulator는 콜백의 반환값을 누적한다. 콜백의 이전 반환값 또는, 콜백의 첫 번째 호출이면서 initialValue를 제공한 경우에는 initialValue의 값이다.
+        - currentValue : 처리할 현재 요소
+        - currentIndex : 처리할 현재 요소의 인덱스. initialValue를 제공한 경우 0, 아니면 1부터 시작한다.
+        - array : reduce()를 호출한 배열
+    * initialValue : callback의 최초 호출에서 첫 번째 인수에 제공하는 값. 초기값을 제공하지 않으면 배열의 첫 번째 요소를 사용한다. 빈 배열에서 초기값없이 reduce()를 호출하면 오류가 발생한다.
+- 반환값
+누적 계산의 결과 값.  
+
+reduce() 는 빈 요소를 제외하고 배열 내에 존재하는 각 요소에 대해 callback 함수를 한 번씩 실행하는데, 콜백 함수는 다음의 네 인수를 받는다.
+    * accumulator
+    * currentValue
+    * currentIndex
+    * array
+- 만약 reduce() 함수 호출에서 initialValue를 제공한 경우, accumulator는 initialValue와 같고 currentValue는 배열의 첫 번째 값과 같다.
+- initialValue를 제공하지 않았다면, accumulator는 배열의 첫 번째 값과 같고 currentValue는 두 번째와 같다.
+
+- reduce() 작동 방식
+1| [0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array) {  
+2|   return accumulator + currentValue;  
+3| }); // 반환값 10  
+
+1| [0, 1, 2, 3, 4].reduce( (prev, curr) => prev + curr ); // 반환값 10  
+
+콜백은 4번 호출된다.  
+
+    - reduce()의 두 번째 인수로 초기값을 제공하는 경우, 결과는 다음과 같다.  
+1| [0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array) {  
+2|   return accumulator + currentValue;  
+3| }, 10); // 반환값 20  
+
+
 ==========
 
 ## 객체 탐색하기
