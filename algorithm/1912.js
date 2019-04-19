@@ -10,27 +10,25 @@
 // 첫째 줄에 답을 출력한다.
 
 // 예제 입력 1 
-// 10
-// 10 -4 3 1 5 6 -35 12 21 -1
+var input = ['12', '10 -4 3 1 5 6 -35 12 21 -100 30 20'];
 // 예제 출력 1 
 // 33
 
-var fs = require('fs');
-var input = fs.readFileSync('/dev/stdin').toString().split("\n");
+// var fs = require('fs');
+// var input = fs.readFileSync('/dev/stdin').toString().split("\n");
 var number = parseInt(input[0]);
 var numArr = input[1].split(' ');
 var All = [];
 
-function fibo(n){
-    fiboans += parseInt(numArr[n]);
-    All.push(fiboans);
-    if(n === number - 1) return;
-    fibo(n + 1);
-}
-
 for(var i = 0; i < number; i++){
     var fiboans = 0;
-    fibo(i);
+    var _All = [];
+    for(var j = i; j < number; j++) {
+        fiboans += parseInt(numArr[j]);
+        _All.push(fiboans);
+    }
+    var a = Math.max.apply(null, _All);
+    All.push(a);
 }
 
 var answer = Math.max.apply(null, All);
