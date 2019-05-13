@@ -64,7 +64,7 @@ var obj = {prop: [element0, element1, ...., elementN]}
 var colors = ['red', 'green', 'blue'];  
 colors.forEach(function(color) {  
   console.log(color);  
-});  
+});  f
 // red  
 // green  
 // blue  
@@ -102,7 +102,7 @@ myArray.reverse();
 
 - sort() // 넘어감..
 
-- forEach(callback[, thisObject]) 메서드는 배열의 모든 요소에 대해 반복적으로 주어진 callback 함수를 실행한다.
+- forEach(callback[, thisObject]) 메서드는 배열의 모든 요소에 대해 반복적으로 주어진 callback 함수를 실행한다. 반환값이 undefined
 var a = ['a', 'b', 'c'];    
 a.forEach(function(element) { console.log(element);} );   
 // logs each item in turn  
