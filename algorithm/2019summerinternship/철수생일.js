@@ -19,6 +19,4 @@ function solution(s) {
         var s = Math.floor(((ts * 2) + (r * -1)) / 4);
         return (((ts * 2) + (r * -1)) % 4) === 0 ? four + t + three.length + s : four + t + three.length + s + 1;
     }
-
-
 }
