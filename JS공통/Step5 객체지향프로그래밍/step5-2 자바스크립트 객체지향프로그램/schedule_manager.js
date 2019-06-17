@@ -17,7 +17,6 @@ App.prototype = {
 
     run() {
         const self = this;
-
         rl.question('명령을 입력하세요: ', async (input) => {
             if (input === 'q') return rl.close();
             try {

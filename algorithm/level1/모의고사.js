@@ -59,22 +59,22 @@
 
 function solution(answers) {
     var winer = [];
-    var firstMan = [1,2,3,4,5];
+    var firstMan = [1, 2, 3, 4, 5];
     var secondMan = [2, 1, 2, 3, 2, 4, 2, 5];
     var thirdMan = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
     var answerslength = answers.length;
     var testpaper = [];
 
-    function repeat(arr){
+    function repeat(arr) {
         var score = 0;
 
-        for(var i = 0; i < Math.ceil(answerslength/arr.length); i++){
+        for (var i = 0; i < Math.ceil(answerslength / arr.length); i++) {
             testpaper = testpaper.concat(arr);
         }
 
         var j = 0;
         answers.forEach(element => {
-            if(element === testpaper[j]){
+            if (element === testpaper[j]) {
                 score = score + 1;
             }
             j++;
@@ -88,14 +88,33 @@ function solution(answers) {
     var sScore = repeat(secondMan);
     var tScore = repeat(thirdMan);
     var maxScore = Math.max(fScore, sScore, tScore);
-    if (fScore === maxScore)winer.push(1);
-    if (sScore === maxScore)winer.push(2);
-    if (tScore === maxScore)winer.push(3);
+    if (fScore === maxScore) winer.push(1);
+    if (sScore === maxScore) winer.push(2);
+    if (tScore === maxScore) winer.push(3);
     return winer;
 }
-console.log(solution([1,2,3,4,5]));
-console.log(solution([1,3,2,4,2]));
+console.log(solution([1, 2, 3, 4, 5]));
+console.log(solution([1, 3, 2, 4, 2]));
 
+function solution(answers) {
+    var num1 = [1, 2, 3, 4, 5];
+    var num2 = [2, 1, 2, 3, 2, 4, 2, 5];
+    var num3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+    var results = [0, 0, 0];
+    var winer = [];
+
+    answers.forEach((ans, i) => {
+        if (ans === num1[i % num1.length]) results[0] += 1;
+        if (ans === num2[i % num2.length]) results[1] += 1;
+        if (ans === num3[i % num3.length]) results[2] += 1;
+    })
+
+    var max = Math.max(...results);
+    results.forEach((result, i) => {
+        if (result === max) winer.push(i + 1);
+    })
+    return winer;
+}
 // 1등 답안
 
 // function solution(answers) {

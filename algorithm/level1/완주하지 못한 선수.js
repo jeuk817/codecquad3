@@ -17,16 +17,13 @@
 
 
 function solution(participant, completion) {
-    var answer = '';
     participant.sort();
     completion.sort();
-    completion.push(0);
-    for(var i =0; i <participant.length; i++){
-        if(participant[i] !== completion[i]){
-            return answer = participant[i];
+    for (var i = 0; i < participant.length; i++) {
+        if (participant[i] !== completion[i]) {
+            return participant[i];
         }
     }
-    return answer;
 }
 
 // 1등 답안

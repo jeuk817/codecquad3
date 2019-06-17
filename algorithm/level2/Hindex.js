@@ -29,3 +29,25 @@ function solution(citations) {
     }
     return Math.max.apply(null, citations) === 0 ? 0 : answer;
 }
+
+// 새로운 답안
+
+function solution(citations) {
+    citations.sort((a, b) => b - a).unshift(0);
+    for (var i = citations.length - 1; i >= 0; i--) {
+        if (citations[i] >= i) return i;
+    }
+}
+
+// 다른 방법
+
+function solution(citations) {
+    citations = citations.sort((a, b) => a - b);
+    while (true) {
+        if (citations.findIndex(x => x < citations.length) !== -1) {
+            citations.shift();
+        } else {
+            return citations.length;
+        }
+    }
+}
